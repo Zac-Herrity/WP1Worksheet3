@@ -1,0 +1,30 @@
+<router-outlet>
+  <h1>Week2 - Fav Movies App [Zac Herrity - S00269936]</h1>
+<h2>Movies List</h2>
+<!-- movies below -->
+ @for (movie of movies(); track movie; let isEven = $even; let isOdd = $odd;){
+  <li [class.evenRow] = "isEven" [class.oddRow] = "isOdd">
+    <button (click)="addFave(movie)" style="margin-right: 5px;">Favourite</button>{{movie}}
+  </li>
+ } @empty {
+  <li>No Movies Found</li>
+ }
+
+ <h2>Favourite Movies</h2>
+
+ @if (favourites().length !== 0){
+  <p style="padding: 1em;">{{favourites().length}} movies chosen.</p>
+ @for (fave of favourites(); track fave; let i = $index; let isEven = $even; let isOdd = $odd;){
+  <li [class.evenRow] = "isEven" [class.oddRow] = "isOdd">
+    <!-- delete button here -->
+     <button (click)="removeFave(i)" style="margin-right: 5px;">Delete</button> {{fave}}
+  </li>
+ } @empty {
+  <li>No favourite moives....</li>
+ }
+ }
+ @else {
+  <p style="padding: 1em;">There are no favourites chosen.</p>
+ }
+</router-outlet>
+
