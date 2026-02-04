@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { inject } from '@angular/core';
+import { Movieservice } from './myservices/movieservice';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('week2');
+  protected readonly title = signal('Week3');
 
-protected movies = signal([
-  "The Secret Life of Walter Mitty" ,
-  "Fantastic Mr Fox" ,
-  "Interstellar" ,
-  "Goodfellas" ,
-  "Heat"
-]
-)
+protected movieService = inject(Movieservice);
 
 protected favourites =signal<string[]>([]); //empty array
 

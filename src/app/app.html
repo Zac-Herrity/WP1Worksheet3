@@ -2,9 +2,13 @@
   <h1>Week3 - (Modified on 4/2/26) Fav Movies App [Zac Herrity - S00269936]</h1>
 <h2>Movies List</h2>
 <!-- movies below -->
- @for (movie of movies(); track movie; let isEven = $even; let isOdd = $odd;){
+ @for (movie of movieService.movies(); track movie; let isEven = $even; let isOdd = $odd;){
   <li [class.evenRow] = "isEven" [class.oddRow] = "isOdd">
-    <button (click)="addFave(movie)" style="margin-right: 5px;">Favourite</button>{{movie}}
+    <button
+    [disabled]="movieService.favourites().includes(movie.title)"
+     (click)="movieService.addFav(movie.title)" style="margin-right: 5px;">
+    {{movieService.favourites().includes(movie.title) ? 'Added' : 'Favourite'}} </button> 
+    {{movie.title}} {{movie.year}} - {{movie.director}}
   </li>
  } @empty {
   <li>No Movies Found</li>
