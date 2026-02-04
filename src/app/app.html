@@ -17,12 +17,12 @@
 
  <h2>Favourite Movies</h2>
 
- @if (favourites().length !== 0){
-  <p style="padding: 1em;">{{favourites().length}} movies chosen.</p>
- @for (fave of favourites(); track fave; let i = $index; let isEven = $even; let isOdd = $odd;){
+ @if (movieService.favourites().length !== 0){
+  <p style="padding: 1em;">{{movieService.favourites().length}} movies chosen.</p>
+ @for (fave of movieService.favourites(); track fave; let i = $index; let isEven = $even; let isOdd = $odd;){
   <li [class.evenRow] = "isEven" [class.oddRow] = "isOdd">
     <!-- delete button here -->
-     <button (click)="removeFave(i)" style="margin-right: 5px;">Delete</button> {{fave}}
+     <button (click)="movieService.deleteFav(i)" style="margin-right: 5px;">Delete</button> {{fave}}
   </li>
  } @empty {
   <li>No favourite moives....</li>

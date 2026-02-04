@@ -14,18 +14,7 @@ export class App {
 
 protected movieService = inject(Movieservice);
 
-protected favourites =signal<string[]>([]); //empty array
 
-//methods
-protected addFave(movies:string) {
-  this.favourites.update(current => [...current, movies]);
-}
-
-protected removeFave(index:number){
-  this.favourites.update(favourites =>
-    favourites.filter((_, i) => i!==index)
-  )
-}
 }
 
 
